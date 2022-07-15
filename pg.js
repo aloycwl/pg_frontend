@@ -15,10 +15,10 @@ try {
 /***
 Deposit (stake in function)
 ***/
-async function deposit() {
-  oamt = $('#samt').val() * $('#num').val() * 1e18;
+async function deposit(oamt) {
+  oamt *= 1e21;
   amt = oamt.toLocaleString('fullwide', { useGrouping: false });
-  if (oamt > balUSDT) { 
+  if (oamt > balUSDT) {
     $('#status').html('Minting Mock USDT'); /*REMOVE THIS IN DEPLOYMENT*/
     await contract3.methods.MINT(acct).send(FA); /*REMOVE THIS IN DEPLOYMENT*/
     //$('#status').html('Insufficient USDT');
@@ -26,10 +26,10 @@ async function deposit() {
   }
   $('#status').html('Approving...');
   appr = await contract3.methods.allowance(acct, CA).call();
-  if (appr < amt) await contract3.methods.approve(CA, amt).send(FA);
-  $('#status').html('Depositing...');
-  await contract.methods.Deposit(_R(), amt, $('#months').val()).send(FA);
-  $('#status').html('Deposited Successfully');
+  if (appr < oamt) await contract3.methods.approve(CA, amt).send(FA);
+  $('#status').html('Buying PG...');
+  await contract.methods.buyToken(amt, _R()).send(FA);
+  $('#status').html('Bought Successfully');
   disUSDT();
 }
 /***
@@ -48,83 +48,10 @@ async function connect() {
   await load(
     [
       {
-        inputs: [],
-        name: 'Cleanup',
+        inputs: [u1, u3],
+        name: 'buyToken',
         outputs: [],
         stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        inputs: [u3, u1, u1],
-        name: 'Deposit',
-        outputs: [],
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        anonymous: false,
-        inputs: [
-          {
-            indexed: true,
-            internalType: 'address',
-            name: 'from',
-            type: 'address',
-          },
-          {
-            indexed: true,
-            internalType: 'address',
-            name: 'to',
-            type: 'address',
-          },
-          {
-            indexed: false,
-            internalType: 'uint256',
-            name: 'amount',
-            type: 'uint256',
-          },
-          {
-            indexed: true,
-            internalType: 'uint256',
-            name: 'status',
-            type: 'uint256',
-          },
-        ],
-        name: 'Payout',
-        type: 'event',
-      },
-      {
-        inputs: [u1],
-        name: 'SetSplit',
-        outputs: [],
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        inputs: [],
-        name: 'Staking',
-        outputs: [],
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        inputs: [u3],
-        name: 'getDownlines',
-        outputs: [u4, u1, u1],
-        stateMutability: 'view',
-        type: 'function',
-      },
-      {
-        inputs: [u3],
-        name: 'getUserPackages',
-        outputs: [u2],
-        stateMutability: 'view',
-        type: 'function',
-      },
-      {
-        inputs: [u1],
-        name: 'Pack',
-        outputs: [u1, u1, u1, u1, u1, u1, u3],
-        stateMutability: 'view',
         type: 'function',
       },
     ],
