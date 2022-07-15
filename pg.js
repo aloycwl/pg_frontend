@@ -6,7 +6,6 @@ CHAIN = 4;
 CA = '0x7b1e62B9A286A11F1a87b655Da6180691EC3bb16';
 CA2 = '0x3F380cB3c3F419F164820baDC9aE22eD2ce080C6';
 USDT = '0x6e6668928fce0aFa11F9fB283d0B0515C2dCe41D';
-_LJS(0);
 try {
   window.ethereum.on('accountsChanged', function (accounts) {
     connect();
