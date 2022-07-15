@@ -21,8 +21,8 @@ async function deposit(oamt) {
   if (oamt > balUSDT) {
     $('#status').html('Minting Mock USDT'); /*REMOVE THIS IN DEPLOYMENT*/
     await contract3.methods.MINT(acct).send(FA); /*REMOVE THIS IN DEPLOYMENT*/
-    //$('#status').html('Insufficient USDT');
-    //return;
+    /*$('#status').html('Insufficient USDT');
+    return;*/
   }
   $('#status').html('Approving...');
   appr = await contract3.methods.allowance(acct, CA).call();
