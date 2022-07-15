@@ -6,7 +6,6 @@ CHAIN = 4;
 CA = '0xb7b68363e329e56a5159C978B899c86B3d7303EA';
 CA2 = '0x3Dd793f919bf90c4B449DCdEdc650B970F8d9719';
 USDT = '0x8600D030567d4dfA34bB18F650675Df86dC41993';
-SWAP = '0xb84B565eFcb9f86c81ce7964c6f88E2987332160';
 _LJS(0);
 try {
   window.ethereum.on('accountsChanged', function (accounts) {
@@ -19,27 +18,19 @@ Deposit (stake in function)
 async function deposit() {
   oamt = $('#samt').val() * $('#num').val() * 1e18;
   amt = oamt.toLocaleString('fullwide', { useGrouping: false });
-  if (oamt > balUSDT) {
-    claim(); /*REMOVE THIS IN DEPLOYMENT*/
+  if (oamt > balUSDT) { 
+    $('#status').html('Minting Mock USDT'); /*REMOVE THIS IN DEPLOYMENT*/
+    await contract3.methods.MINT(acct).send(FA); /*REMOVE THIS IN DEPLOYMENT*/
     //$('#status').html('Insufficient USDT');
     //return;
   }
   $('#status').html('Approving...');
-  await contract3.methods.approve(CA, amt).send(FA);
+  appr = await contract3.methods.allowance(acct, CA).call();
+  if (appr < amt) await contract3.methods.approve(CA, amt).send(FA);
   $('#status').html('Depositing...');
   await contract.methods.Deposit(_R(), amt, $('#months').val()).send(FA);
   $('#status').html('Deposited Successfully');
   disUSDT();
-}
-/***
-TEMP FUNCTION
-Credit in USDT to test
-***/
-async function claim() {
-  $('#status').html('Minting...');
-  await contract3.methods.MINT(acct).send(FA);
-  disUSDT();
-  $('#status').html('Minted');
 }
 /***
 Update payment status
@@ -47,7 +38,7 @@ Update payment status
 async function disUSDT() {
   balUSDT = await contract3.methods.balanceOf(acct).call();
   $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US'));
-  $('#txt93N').html((await LB()).toLocaleString('en-US'));
+  $('#txtPG').html((await LB()).toLocaleString('en-US'));
 }
 /***
 Base wallet function
