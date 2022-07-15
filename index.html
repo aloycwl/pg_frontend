@@ -10,118 +10,25 @@
       .hide {
         display: none;
       }
-      a {
-        cursor: pointer;
-        color: blue;
-        text-decoration: underline;
-      }
-      i {
-        font-size: small;
-      }
-      .text {
-        cursor: default;
-        color: black;
-        text-decoration: none;
-      }
-      input {
-        width: 100px;
-      }
     </style>
   </head>
   <body>
     <a id="connect" onclick="connect()">Connect</a>
     <div id="root" class="hide">
-      <h1>Part 1</h1>
-      <ol>
-        <li><i id="status">Status...</i></li>
-        <li>Connect to Rinkeby Test Network</li>
-        <li>
-          Get test token from faucet as gas fee -
-          <a href="https://rinkebyfaucet.com/" target="_blank">Here</a>
-        </li>
-        <li>
-          Claim MOCK-USDT to deposit -
-          <a onclick="claim()">Here</a>
-        </li>
-        <li>Your USDT Token: <span id="txtUSDT"></span></li>
-        <li>Your 93N Token: <span id="txt93N"></span></li>
-      </ol>
-      <h1>Part 2</h1>
-      <ol>
-        <li>Referred by: <span id="txtRB"></span></li>
-        <li>Approval to transfer USDT to contract.</li>
-        <li>
-          <select id="samt">
-            <option value="100">100</option>
-            <option value="1000">1,000</option>
-            <option value="10000">10,000</option>
-          </select>
-          <select id="num">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-          in
-          <select id="months">
-            <option value="3">3</option>
-            <option value="6">6</option>
-            <option value="9">9</option>
-          </select>
-          months - <a onclick="deposit()">Stake now</a>
-        </li>
-        <li>
-          Your referral link:
-          <a
-            id="txtRef"
-            onclick="navigator.clipboard.writeText(location.href.replace(location.hash,'')+'#'+$(this).val());$('#status').html('Copied')"
-            >Click to copy</a
-          >
-        </li>
-      </ol>
-      <h1>Part 3</h1>
-      <ol>
-        <li>Your packages details - <a onclick="disUser(acct,1)">Here</a></li>
-        <ol id="lv1"></ol>
-        <li>
-          Your earning history -
-          <a onclick="loadEarnings('history','')">Here</a>
-        </li>
-        <ol id="history"></ol>
-      </ol>
-      <h1>Part 4</h1>
-      <ol>
-        <li>Staking for all <a onclick="stake()">Here</a></li>
-      </ol>
-      <h1>Part 5</h1>
-      <ol>
-        <li>
-          Own swap (add / remove liquidity from etherscan) -
-          <a
-            href="https://rinkeby.etherscan.io/address/0xeDE87e8D824aFb897d01B8e40D9A24Df4Db60efB#writeContract"
-            target="_blank"
-            >Here</a
-          >
-        </li>
-        <li>
-          USDT: <input id="amt1" onkeyup="getPrice(USDT,CA2,1)" />
-          <button onclick="xc(USDT,CA2,1,contract3)">
-            Exchange <b id="xc1">0</b> 93N
-          </button>
-        </li>
-        <li>
-          93N: <input id="amt2" onkeyup="getPrice(CA2,USDT,2)" />
-          <button onclick="xc(CA2,USDT,2,contract2)">
-            Exchange <b id="xc2">0</b> USDT
-          </button>
-        </li>
-      </ol>
+      <i id="status">Status...</i><br /><br />
+      Claim MOCK-USDT to deposit -
+      <a onclick="claim()">Here</a><br />
+      Your USDT Token: <span id="txtUSDT"></span><br />
+      Your 93N Token: <span id="txt93N"></span> <br /><br />
+      Referred by: <span id="txtRB"></span><br />
+      <a
+        id="txtRef"
+        onclick="navigator.clipboard.writeText(location.href.replace(location.hash,'')+'#'+$(this).val());$('#status').html('Copied')"
+        >Your referral link - Click to copy</a
+      >
+      <br /><br />
+      <button>5,000</button> <button>10,000</button> <button>50,000</button>
+      <button>100,000</button>
     </div>
   </body>
 </html>
