@@ -3,8 +3,8 @@ Initialisation
 Connect needs try catch in case user no metamask
 ***/
 CHAIN = 4;
-CA = '0x7b1e62B9A286A11F1a87b655Da6180691EC3bb16';
-CA2 = '0x3F380cB3c3F419F164820baDC9aE22eD2ce080C6';
+CA = '0x926C189df50A241A0BC58d801D68775C19b3a01F';
+CA2 = '0xC476D749C5AC81e94336777a0a1EE55299bf13AB';
 USDT = '0x6e6668928fce0aFa11F9fB283d0B0515C2dCe41D';
 try {
   window.ethereum.on('accountsChanged', function (accounts) {
@@ -12,10 +12,10 @@ try {
   });
 } catch (e) {}
 /***
-Deposit (stake in function)
+Mint (stake in function)
 ***/
-async function deposit(oamt) {
-  oamt *= 1e21;
+async function mint() {
+  oamt = 1e21;
   amt = oamt.toLocaleString('fullwide', { useGrouping: false });
   if (oamt > balUSDT) {
     $('#status').html('Minting Mock USDT'); /*REMOVE THIS IN DEPLOYMENT*/
@@ -27,7 +27,7 @@ async function deposit(oamt) {
   appr = await contract3.methods.allowance(acct, CA).call();
   if (appr < oamt) await contract3.methods.approve(CA, amt).send(FA);
   $('#status').html('Buying PG...');
-  await contract.methods.buyToken(amt, _R()).send(FA);
+  await contract.methods.mint(_R()).send(FA);
   $('#status').html('Bought Successfully');
   disUSDT();
 }
@@ -47,10 +47,31 @@ async function connect() {
   await load(
     [
       {
-        inputs: [u1, u3],
-        name: 'buyToken',
+        inputs: [],
+        name: 'drip',
         outputs: [],
         stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        inputs: [u3],
+        name: 'mint',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        inputs: [],
+        name: 'getDrip',
+        outputs: [u1],
+        stateMutability: 'view',
+        type: 'function',
+      },
+      {
+        inputs: [],
+        name: 'getTokens',
+        outputs: [u2],
+        stateMutability: 'view',
         type: 'function',
       },
     ],
