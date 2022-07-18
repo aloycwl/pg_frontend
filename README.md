@@ -1,2 +1,2 @@
-# pg_frontend
-Player Go Frontend
+# Ready Go Frontend
+Ready Go Frontend
