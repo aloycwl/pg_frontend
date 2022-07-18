@@ -32,6 +32,10 @@ async function mint() {
   disUSDT();
 }
 /***
+Drip function
+***/
+async function drip() {}
+/***
 Update payment status
 ***/
 async function disUSDT() {
