@@ -40,7 +40,7 @@ async function disUSDT() {
   $('#txtRG').html(
     (await LB()).toLocaleString('en-US') +
       ' ' +
-      (await contract.methods.getTokens(acct).call())
+      (await contract.methods.getTokens().call(FA))
   );
 }
 /***
