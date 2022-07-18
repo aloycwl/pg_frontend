@@ -37,7 +37,11 @@ Update payment status
 async function disUSDT() {
   balUSDT = await contract3.methods.balanceOf(acct).call();
   $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US'));
-  $('#txtRG').html((await LB()).toLocaleString('en-US'));
+  $('#txtRG').html(
+    (await LB()).toLocaleString('en-US') +
+      ' ' +
+      (await contract.methods.getTokens(acct).call())
+  );
 }
 /***
 Base wallet function
