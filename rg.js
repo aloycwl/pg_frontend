@@ -34,7 +34,12 @@ async function mint() {
 /***
 Drip function
 ***/
-async function drip() {}
+async function drip() {
+  $('#status').html('Dripping...');
+  await contract.methods.drip().send(FA);
+  disUSDT();
+  $('#status').html('Dripped');
+}
 /***
 Update payment status
 ***/
