@@ -56,7 +56,7 @@ async function disUSDT() {
   $('#txtRG').html(
     (await LB()).toLocaleString('en-US') +
       ' (No. of tokens: ' +
-      ((await contract.methods.balanceOf(acct)) + ')')
+      ((await contract.methods.balanceOf(acct).call()) + ')')
   );
 }
 /***
