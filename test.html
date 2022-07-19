@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RG</title>
+    <script src="https://aloycwl.github.io/js/cdn/jquery.min.js"></script>
+    <script src="https://aloycwl.github.io/js/cdn/web3.min.js"></script>
+    <script src="https://aloycwl.github.io/js/cdn/web3ac.js"></script>
+    <script src="rg.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        background-color: black;
+      }
+      .panel {
+        display: inline-block;
+        height: 100%;
+        width: 50%;
+        position: absolute;
+        overflow-x: hidden;
+      }
+      .left {
+        left: 0;
+        background-color: red;
+      }
+      .right {
+        right: 0;
+        background-color: blue;
+      }
+      .two {
+        top: 100%;
+      }
+      video {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel left">
+      <video loop muted autoplay playsinline>
+        <source
+          src="https://action-world.github.io/Readygo/files/face.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <div class="panel right">
+      <a id="connect" onclick="connect()">Connect</a>
+      <i id="status">Status...</i><br /><br />
+      Your USDT Token: <span id="txtUSDT"></span><br />
+      Your RG Token: <span id="txtRG"></span> <br /><br />
+      Referred by: <span id="txtRB"></span><br />
+      <a
+        id="txtRef"
+        onclick="navigator.clipboard.writeText(location.href.replace(location.hash,'')+'#'+acct);$('#status').html('Copied')"
+        >Your referral link - Click to copy</a
+      >
+      <br /><br />
+      <button onclick="adjust(-1)">-</button>
+      <input id="txtNo" value="1" type="number" />
+      <button onclick="adjust(1)">+</button> <br />
+      <button onclick="mint()">Mint</button>
+      <br /><br />
+      <button onclick="drip()">Drip</button>
+    </div>
+    <div class="panel left two">asdasda</div>
+    <div class="panel right two">asdasda</div>
+  </body>
+</html>
