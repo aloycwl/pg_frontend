@@ -43,8 +43,8 @@ async function disUSDT() {
   $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US'));
   $('#txtRG').html(
     (await LB()).toLocaleString('en-US') +
-      ' (Token no.: ' +
-      ((await contract.methods.getTokens().call(FA)) + ')')
+      ' (No. of tokens: ' +
+      ((await contract.methods.getTokens().call(FA)).length + ')')
   );
 }
 /***
