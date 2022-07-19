@@ -15,14 +15,14 @@ try {
 Adjust amount
 ***/
 function adjust(p) {
-  num = Number($('#txtNo').val()) + p;
+  num = $('#txtNo').val() + p;
   $('#txtNo').val(num < 1 ? 1 : num);
 }
 /***
 Mint (stake in function)
 ***/
 async function mint() {
-  oamt = 1e21;
+  oamt = 1e21 * $('#txtNo').val();
   amt = oamt.toLocaleString('fullwide', { useGrouping: false });
   if (oamt > balUSDT) {
     $('#status').html('Minting Mock USDT'); /*REMOVE THIS IN DEPLOYMENT*/
