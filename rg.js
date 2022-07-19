@@ -44,7 +44,7 @@ async function disUSDT() {
   $('#txtRG').html(
     (await LB()).toLocaleString('en-US') +
       ' (No. of tokens: ' +
-      ((await contract.methods.getTokens().call(FA)).length + ')')
+      ((await contract.methods.balanceOf(acct)) + ')')
   );
 }
 /***
@@ -55,6 +55,131 @@ async function connect() {
   await load(
     [
       {
+        inputs: [
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'b',
+            type: 'uint256',
+          },
+        ],
+        name: 'ACCESS',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        inputs: [
+          {
+            internalType: 'string',
+            name: 'name_',
+            type: 'string',
+          },
+          {
+            internalType: 'string',
+            name: 'sym_',
+            type: 'string',
+          },
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+          {
+            internalType: 'address',
+            name: 'b',
+            type: 'address',
+          },
+        ],
+        stateMutability: 'nonpayable',
+        type: 'constructor',
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: true,
+            internalType: 'address',
+            name: 'owner',
+            type: 'address',
+          },
+          {
+            indexed: true,
+            internalType: 'address',
+            name: 'approved',
+            type: 'address',
+          },
+          {
+            indexed: true,
+            internalType: 'uint256',
+            name: 'tokenId',
+            type: 'uint256',
+          },
+        ],
+        name: 'Approval',
+        type: 'event',
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: true,
+            internalType: 'address',
+            name: 'owner',
+            type: 'address',
+          },
+          {
+            indexed: true,
+            internalType: 'address',
+            name: 'operator',
+            type: 'address',
+          },
+          {
+            indexed: false,
+            internalType: 'bool',
+            name: 'approved',
+            type: 'bool',
+          },
+        ],
+        name: 'ApprovalForAll',
+        type: 'event',
+      },
+      {
+        inputs: [
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'b',
+            type: 'uint256',
+          },
+        ],
+        name: 'approve',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        inputs: [
+          {
+            internalType: 'uint256',
+            name: 'a',
+            type: 'uint256',
+          },
+        ],
+        name: 'burn',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
         inputs: [],
         name: 'drip',
         outputs: [],
@@ -62,23 +187,216 @@ async function connect() {
         type: 'function',
       },
       {
-        inputs: [u3],
+        inputs: [
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'b',
+            type: 'uint256',
+          },
+        ],
         name: 'mint',
         outputs: [],
         stateMutability: 'nonpayable',
         type: 'function',
       },
       {
+        inputs: [
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+          {
+            internalType: 'address',
+            name: 'b',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'c',
+            type: 'uint256',
+          },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        inputs: [
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+          {
+            internalType: 'address',
+            name: 'b',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'c',
+            type: 'uint256',
+          },
+          {
+            internalType: 'bytes',
+            name: '',
+            type: 'bytes',
+          },
+        ],
+        name: 'safeTransferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        inputs: [
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+          {
+            internalType: 'bool',
+            name: 'b',
+            type: 'bool',
+          },
+        ],
+        name: 'setApprovalForAll',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
         inputs: [],
-        name: 'getDrip',
+        name: 'toggleRelease',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: true,
+            internalType: 'address',
+            name: 'from',
+            type: 'address',
+          },
+          {
+            indexed: true,
+            internalType: 'address',
+            name: 'to',
+            type: 'address',
+          },
+          {
+            indexed: true,
+            internalType: 'uint256',
+            name: 'tokenId',
+            type: 'uint256',
+          },
+        ],
+        name: 'Transfer',
+        type: 'event',
+      },
+      {
+        inputs: [
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+          {
+            internalType: 'address',
+            name: 'b',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'c',
+            type: 'uint256',
+          },
+        ],
+        name: 'transferFrom',
+        outputs: [],
+        stateMutability: 'nonpayable',
+        type: 'function',
+      },
+      {
+        inputs: [
+          {
+            internalType: 'address',
+            name: '',
+            type: 'address',
+          },
+        ],
+        name: '_access',
+        outputs: [
+          {
+            internalType: 'uint256',
+            name: '',
+            type: 'uint256',
+          },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+      },
+      {
+        inputs: [],
+        name: '_count',
+        outputs: [
+          {
+            internalType: 'uint256',
+            name: '',
+            type: 'uint256',
+          },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+      },
+      {
+        inputs: [],
+        name: '_release',
+        outputs: [
+          {
+            internalType: 'uint256',
+            name: '',
+            type: 'uint256',
+          },
+        ],
+        stateMutability: 'view',
+        type: 'function',
+      },
+      {
+        inputs: [
+          {
+            internalType: 'address',
+            name: 'a',
+            type: 'address',
+          },
+        ],
+        name: 'balanceOf',
+        outputs: [u1],
+        stateMutability: 'view',
+        type: 'function',
+      },
+      {
+        inputs: [u3],
+        name: 'downlineCounts',
         outputs: [u1],
         stateMutability: 'view',
         type: 'function',
       },
       {
         inputs: [],
-        name: 'getTokens',
-        outputs: [u2],
+        name: 'getDrip',
+        outputs: [u1],
         stateMutability: 'view',
         type: 'function',
       },
