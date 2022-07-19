@@ -22,6 +22,7 @@ function adjust(p) {
 Mint (stake in function)
 ***/
 async function mint() {
+  await connect();
   oamt = 1e21 * Number($('#txtNo').val());
   amt = oamt.toLocaleString('fullwide', { useGrouping: false });
   if (oamt > balUSDT) {
@@ -42,10 +43,11 @@ async function mint() {
 Drip function
 ***/
 async function drip() {
-  $('#status').html('Dripping...');
+  await connect();
+  $('#status').html('Claiming...');
   await contract.methods.drip().send(FA);
   disUSDT();
-  $('#status').html('Dripped');
+  $('#status').html('Claimed');
 }
 /***
 Update payment status
@@ -58,6 +60,16 @@ async function disUSDT() {
       ' (No. of tokens: ' +
       ((await contract.methods.balanceOf(acct).call()) + ')')
   );
+}
+/***
+Copy function
+***/
+async function copy() {
+  await connect();
+  navigator.clipboard.writeText(
+    location.href.replace(location.hash, '') + '#' + acct
+  );
+  $('#txtRef').html('Copied');
 }
 /***
 Base wallet function

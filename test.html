@@ -6,6 +6,10 @@
     <script src="https://aloycwl.github.io/js/cdn/web3.min.js"></script>
     <script src="https://aloycwl.github.io/js/cdn/web3ac.js"></script>
     <script src="rg.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto"
+    />
     <style>
       * {
         padding: 0;
@@ -15,6 +19,7 @@
       body {
         height: 100%;
         background-color: black;
+        font-family: Roboto;
       }
       .panel {
         display: inline-block;
@@ -29,13 +34,22 @@
       }
       .right {
         right: 0;
-        background-color: blue;
       }
       .two {
         top: 100%;
       }
-      video {
-        width: 100%;
+      video,
+      .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+      }
+      button {
+        font-size: large;
+        padding: 3px;
       }
     </style>
   </head>
@@ -49,23 +63,26 @@
       </video>
     </div>
     <div class="panel right">
-      <a id="connect" onclick="connect()">Connect</a>
-      <i id="status">Status...</i><br /><br />
-      Your USDT Token: <span id="txtUSDT"></span><br />
-      Your RG Token: <span id="txtRG"></span> <br /><br />
-      Referred by: <span id="txtRB"></span><br />
-      <a
-        id="txtRef"
-        onclick="navigator.clipboard.writeText(location.href.replace(location.hash,'')+'#'+acct);$('#status').html('Copied')"
-        >Your referral link - Click to copy</a
-      >
-      <br /><br />
-      <button onclick="adjust(-1)">-</button>
-      <input id="txtNo" value="1" type="number" />
-      <button onclick="adjust(1)">+</button> <br />
-      <button onclick="mint()">Mint</button>
-      <br /><br />
-      <button onclick="drip()">Drip</button>
+      <div class="center">
+        <img src="https://action-world.github.io/Readygo/images/image.png" />
+        <h3>Connect to BSC Mainnet to mint</h3>
+        <br />
+        <h3><i>1000 BUSD each Presale NFT </i></h3>
+        <br /><br />
+        <button onclick="adjust(-1)">-</button>
+        <input id="txtNo" value="1" type="number" />
+        <button onclick="adjust(1)">+</button> <br />
+        <button onclick="mint()">Mint</button>
+        <br /><br />
+        Your RG Token: <span id="txtRG"></span> <br /><br />
+        <button onclick="drip()">Drip</button>
+        <br />
+        <a
+          id="txtRef"
+          onclick=""
+          >Your referral link - Click to copy</a
+        >
+      </div>
     </div>
     <div class="panel left two">asdasda</div>
     <div class="panel right two">asdasda</div>
