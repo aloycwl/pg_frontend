@@ -12,6 +12,12 @@ try {
   });
 } catch (e) {}
 /***
+Adjust amount
+***/
+function adjust(p) {
+  console.log($('#txtNo').val());
+}
+/***
 Mint (stake in function)
 ***/
 async function mint() {
