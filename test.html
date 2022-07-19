@@ -50,7 +50,8 @@
       button,
       input {
         font-size: large;
-        padding: 3px;
+        padding: 5px 10px 5px 10px;
+        border-radius: 6px;
       }
       button {
         background-color: black;
@@ -63,7 +64,7 @@
       }
       input {
         width: 50px;
-        margin: 0 20px 20px 20px;
+        margin: 30px 20px 30px 20px;
       }
       .adjust {
         width: 30px;
@@ -85,14 +86,14 @@
         <h3>Connect to BSC Mainnet to mint</h3>
         <br />
         <h3><i>1000 BUSD each Presale NFT </i></h3>
-        <br /><br />
         <button onclick="adjust(-1)" class="adjust">-</button>
         <input id="txtNo" value="1" />
         <button onclick="adjust(1)" class="adjust">+</button> <br />
         <button onclick="mint()">Presale Mint</button>
         <br /><br />
-        Your RG Token: <span id="txtRG"></span> <br /><br />
-        <button onclick="drip()">Drip</button>
+        <h3>Your RG Token: <span id="txtRG">00.00</span></h3>
+        <br /><br />
+        <button onclick="drip()">Claim</button><br />
         <br />
         <button id="txtRef" onclick="copy()">Copy Your Referral Link</button>
       </div>
