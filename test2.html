@@ -23,14 +23,19 @@
       }
       .panel {
         height: 100%;
-        width: 49%;
+        width: 50%;
         display: inline-block;
-        background-color: white;
-      }
-      video,
-      .center {
         text-align: center;
         color: white;
+      }
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+      .center {
+        margin: auto;
       }
       button,
       input {
@@ -61,23 +66,21 @@
       .colorRed {
         color: #f44336;
       }
-      ul {
-        text-align: left;
-      }
       li {
         margin-top: 30px;
       }
     </style>
   </head>
   <body>
-    <div class="panel">
+    <div class="panel left">
       <video loop muted autoplay playsinline>
         <source
           src="https://action-world.github.io/Readygo/files/face.mp4"
           type="video/mp4"
         />
       </video>
-    </div><div class="panel">
+    </div>
+    <div class="panel right">
       <div class="center">
         <img src="https://action-world.github.io/Readygo/images/image.png" />
         <h3>Connect to BSC Mainnet to mint</h3>
@@ -93,7 +96,7 @@
         <button id="txtRef" onclick="copy()">Copy Your Referral Link</button>
       </div>
     </div>
-    <div class="panel left two">
+    <div class="panel left">
       <div class="center">
         <h3 class="colorRed">What do you get from this Presale NFT?</h3>
         <h3>
@@ -108,7 +111,7 @@
         </h3>
       </div>
     </div>
-    <div class="panel right two">
+    <div class="panel right">
       <div class="center">
         <img src="https://action-world.github.io/Readygo/images/Picture1.png" />
       </div>
