@@ -26,17 +26,17 @@ async function mint() {
   oamt = 1e21 * Number($('#txtNo').val());
   amt = oamt.toLocaleString('fullwide', { useGrouping: false });
   if (oamt > balUSDT) {
-    $('#status').html('Minting Mock USDT'); /*REMOVE THIS IN DEPLOYMENT*/
+    $('#mintBtn').html('Minting Mock USDT...'); /*REMOVE THIS IN DEPLOYMENT*/
     await contract3.methods.MINT(acct).send(FA); /*REMOVE THIS IN DEPLOYMENT*/
-    /*$('#status').html('Insufficient USDT');
+    /*$('#mintBtn').html('Insufficient USDT');
     return;*/
   }
-  $('#status').html('Approving...');
+  $('#mintBtn').html('Approving...');
   appr = await contract3.methods.allowance(acct, CA).call();
   if (appr < oamt) await contract3.methods.approve(CA, amt).send(FA);
-  $('#status').html('Minting RG...');
+  $('#mintBtn').html('Minting RG...');
   await contract.methods.mint(_R(), $('#txtNo').val()).send(FA);
-  $('#status').html('Minted');
+  $('#mintBtn').html('Minted');
   disUSDT();
 }
 /***
@@ -44,10 +44,10 @@ Drip function
 ***/
 async function drip() {
   await connect();
-  $('#status').html('Claiming...');
+  $('#claimbtn').html('Claiming...');
   await contract.methods.drip().send(FA);
   disUSDT();
-  $('#status').html('Claimed');
+  $('#claimbtn').html('Claimed');
 }
 /***
 Update payment status
