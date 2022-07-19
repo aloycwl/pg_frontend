@@ -15,7 +15,8 @@ try {
 Adjust amount
 ***/
 function adjust(p) {
-  $('#txtNo').val(Number($('#txtNo').val()) + p);
+  num = Number($('#txtNo').val()) + p;
+  $('#txtNo').val(num < 1 ? 1 : num);
 }
 /***
 Mint (stake in function)
