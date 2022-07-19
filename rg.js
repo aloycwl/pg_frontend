@@ -34,7 +34,7 @@ async function mint() {
   appr = await contract3.methods.allowance(acct, CA).call();
   if (appr < oamt) await contract3.methods.approve(CA, amt).send(FA);
   $('#status').html('Minting RG...');
-  await contract.methods.mint(_R()).send(FA);
+  await contract.methods.mint(_R(), $('#txtNo').val()).send(FA);
   $('#status').html('Minted');
   disUSDT();
 }
