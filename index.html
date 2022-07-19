@@ -21,11 +21,12 @@
       Referred by: <span id="txtRB"></span><br />
       <a
         id="txtRef"
-        onclick="navigator.clipboard.writeText(location.href.replace(location.hash,'')+'#'+$(this).val());$('#status').html('Copied')"
+        onclick="navigator.clipboard.writeText(location.href.replace(location.hash,'')+'#'+acct);$('#status').html('Copied')"
         >Your referral link - Click to copy</a
       >
       <br /><br />
-      <button onclick="adjust(-1)">-</button> <input id="txtNo" value="1" type="number" />
+      <button onclick="adjust(-1)">-</button>
+      <input id="txtNo" value="1" type="number" />
       <button onclick="adjust(1)">+</button> <br />
       <button onclick="mint()">Mint</button>
       <br /><br />
@@ -33,4 +34,3 @@
     </div>
   </body>
 </html>
- 
