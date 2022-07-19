@@ -47,9 +47,26 @@
         text-align: center;
         color: white;
       }
-      button {
+      button,
+      input {
         font-size: large;
         padding: 3px;
+      }
+      button {
+        background-color: black;
+        color: #f44336;
+        border-color: #f44336;
+      }
+      button:hover {
+        background: #f44336;
+        color: white;
+      }
+      input {
+        width: 50px;
+        margin: 0 20px 20px 20px;
+      }
+      .adjust {
+        width: 30px;
       }
     </style>
   </head>
@@ -69,19 +86,15 @@
         <br />
         <h3><i>1000 BUSD each Presale NFT </i></h3>
         <br /><br />
-        <button onclick="adjust(-1)">-</button>
-        <input id="txtNo" value="1" type="number" />
-        <button onclick="adjust(1)">+</button> <br />
-        <button onclick="mint()">Mint</button>
+        <button onclick="adjust(-1)" class="adjust">-</button>
+        <input id="txtNo" value="1" />
+        <button onclick="adjust(1)" class="adjust">+</button> <br />
+        <button onclick="mint()">Presale Mint</button>
         <br /><br />
         Your RG Token: <span id="txtRG"></span> <br /><br />
         <button onclick="drip()">Drip</button>
         <br />
-        <a
-          id="txtRef"
-          onclick=""
-          >Your referral link - Click to copy</a
-        >
+        <button id="txtRef" onclick="copy()">Copy Your Referral Link</button>
       </div>
     </div>
     <div class="panel left two">asdasda</div>

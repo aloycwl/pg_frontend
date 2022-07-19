@@ -16,7 +16,7 @@ Adjust amount
 ***/
 function adjust(p) {
   num = Number($('#txtNo').val()) + p;
-  $('#txtNo').val(num < 1 ? 1 : num);
+  $('#txtNo').val(num < 1 || isNaN(num) ? 1 : num);
 }
 /***
 Mint (stake in function)
