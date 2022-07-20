@@ -66,7 +66,7 @@ Copy function
 ***/
 async function copy() {
   navigator.clipboard.writeText(
-    location.href.replace(location.hash, '') + '#' + acct
+    location.href.replace(location.hash, '') + '?#' + acct
   );
   $('#txtRef').html('Copied');
 }
