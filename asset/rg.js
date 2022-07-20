@@ -76,6 +76,8 @@ Base wallet function
 With ABI
 ***/
 async function connect() {
+  $('#conBtn').hide();
+  $('#root').show();
   await load(
     [
       {
@@ -151,6 +153,4 @@ async function connect() {
     USDT
   );
   await disUSDT();
-  $('#txtRB').html(_R());
-  $('#txtRef').val(acct);
 }

@@ -89,6 +89,9 @@
           max-width: 100%;
         }
       }
+      #root {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -99,18 +102,23 @@
     </div>
     <div class="panel right">
       <div class="center">
-        <img src="asset/go.png" />
-        <h3>Connect to BSC Mainnet to mint</h3>
-        <br />
-        <h3><i>1000 BUSD each Presale NFT </i></h3>
-        <button onclick="adjust(-1)" class="adjust">-</button>
-        <input id="txtNo" value="1" />
-        <button onclick="adjust(1)" class="adjust">+</button> <br />
-        <button id="mintBtn" onclick="mint()">Presale Mint</button>
-        <h3 class="heightPad">Your RG Token: <span id="txtRG">00.00</span></h3>
-        <button id="claimbtn" onclick="drip()">Claim</button><br />
-        <br />
-        <button id="txtRef" onclick="copy()">Copy Your Referral Link</button>
+        <button id="conBtn" onclick="connect()">Connect Wallet</button>
+        <div id="root">
+          <img src="asset/go.png" />
+          <h3>Connect to BSC Mainnet to mint</h3>
+          <br />
+          <h3><i>1000 BUSD each Presale NFT </i></h3>
+          <button onclick="adjust(-1)" class="adjust">-</button>
+          <input id="txtNo" value="1" />
+          <button onclick="adjust(1)" class="adjust">+</button> <br />
+          <button id="mintBtn" onclick="mint()">Presale Mint</button>
+          <h3 class="heightPad">
+            Your RG Token: <span id="txtRG">00.00</span>
+          </h3>
+          <button id="claimbtn" onclick="drip()">Claim</button><br />
+          <br />
+          <button id="txtRef" onclick="copy()">Copy Your Referral Link</button>
+        </div>
       </div>
     </div>
     <div class="panel left two">
