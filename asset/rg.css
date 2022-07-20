@@ -12,6 +12,7 @@ body {
   height: 100%;
   width: 50%;
   position: absolute;
+  border-color: white;
 }
 @media only screen and (min-width: 600px) {
   .left {
