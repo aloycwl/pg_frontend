@@ -5,7 +5,7 @@ Connect needs try catch in case user no metamask
 CHAIN = 4;
 CA = '0x913bd35Db4577106f6668d32Cb1B1ab1478ACA91';
 CA2 = '0x73D29551ebC7D7Ac1Bf8E5727b691e0Efa5be290';
-USDT = '0xdC940e2254066f34108C625A0E479911B12B2E9a';
+USDT = '0x263b0355B80d384C55dec84DD13DFa10D2141442';
 try {
   window.ethereum.on('accountsChanged', function (accounts) {
     connect();
