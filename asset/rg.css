@@ -12,7 +12,6 @@ body {
   height: 100%;
   width: 50%;
   position: absolute;
-  border-color: white;
 }
 @media only screen and (min-width: 600px) {
   .left {
@@ -26,6 +25,7 @@ body {
   }
 }
 video,
+img,
 .center {
   position: absolute;
   top: 50%;
@@ -34,6 +34,7 @@ video,
   text-align: center;
   color: white;
   width: 100%;
+  max-height: 100%;
 }
 button,
 input {
@@ -72,12 +73,12 @@ li {
     width: 100%;
     position: relative;
   }
-  img,
-  video {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
+}
+img,
+video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 #root {
   display: none;
