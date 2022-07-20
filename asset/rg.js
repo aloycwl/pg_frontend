@@ -24,6 +24,8 @@ Mint (stake in function)
 async function mint() {
   oamt = 1e21 * Number($('#txtNo').val());
   amt = oamt.toLocaleString('fullwide', { useGrouping: false });
+  balUSDT = await contract3.methods.balanceOf(acct).call();
+  $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US'));
   if (oamt > balUSDT) {
     $('#mintBtn').html('Minting Mock USDT...'); /*REMOVE THIS IN DEPLOYMENT*/
     await contract3.methods.MINT(acct).send(FA); /*REMOVE THIS IN DEPLOYMENT*/
@@ -51,8 +53,6 @@ async function drip() {
 Update payment status
 ***/
 async function disUSDT() {
-  balUSDT = await contract3.methods.balanceOf(acct).call();
-  $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US'));
   $('#txtRG').html(
     ((await contract.methods.getDrip().call(FA)) / 1e18).toLocaleString(
       'en-US'
