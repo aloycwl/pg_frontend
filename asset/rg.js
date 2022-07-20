@@ -3,9 +3,9 @@ Initialisation
 Connect needs try catch in case user no metamask
 ***/
 CHAIN = 4;
-CA = '0x08624a492d17C9Cd664D67C25e036E06C976e00E';
-CA2 = '0xC476D749C5AC81e94336777a0a1EE55299bf13AB';
-USDT = '0x6e6668928fce0aFa11F9fB283d0B0515C2dCe41D';
+CA = '0x913bd35Db4577106f6668d32Cb1B1ab1478ACA91';
+CA2 = '0x73D29551ebC7D7Ac1Bf8E5727b691e0Efa5be290';
+USDT = '0xdC940e2254066f34108C625A0E479911B12B2E9a';
 try {
   window.ethereum.on('accountsChanged', function (accounts) {
     connect();
