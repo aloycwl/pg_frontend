@@ -74,46 +74,63 @@ async function copy() {
 }
 async function connect() {
   $('#conBtn').hide();
-  await load(
-    [
-      {
-        inputs: [],
-        name: 'drip',
-        outputs: [],
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        inputs: [u3, u1],
-        name: 'mint',
-        outputs: [],
-        stateMutability: 'nonpayable',
-        type: 'function',
-      },
-      {
-        inputs: [u3],
-        name: 'balanceOf',
-        outputs: [u1],
-        stateMutability: 'view',
-        type: 'function',
-      },
-      {
-        inputs: [u3],
-        name: 'downlineCounts',
-        outputs: [u1],
-        stateMutability: 'view',
-        type: 'function',
-      },
-      {
-        inputs: [],
-        name: 'getDrip',
-        outputs: [u1],
-        stateMutability: 'view',
-        type: 'function',
-      },
-    ],
-    CA
-  );
+  if (typeof CS != 'undefined')
+    $('head').append(
+      $(
+        '<meta name="viewport"content="width=device-width,initial-scale=1.0"><link rel="stylesheet">'
+      ).attr('href', CS)
+    );
+  if (typeof ethereum != 'undefined') {
+    web3 = new Web3(ethereum);
+    acct = await ethereum.request({ method: 'eth_requestAccounts' });
+    acct = acct[0];
+    if ((await web3.eth.net.getId()) != CHAIN) {
+      await ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x' + CHAIN }],
+      });
+    }
+    contract = new web3.eth.Contract(
+      [
+        {
+          inputs: [],
+          name: 'drip',
+          outputs: [],
+          stateMutability: 'nonpayable',
+          type: 'function',
+        },
+        {
+          inputs: [u3, u1],
+          name: 'mint',
+          outputs: [],
+          stateMutability: 'nonpayable',
+          type: 'function',
+        },
+        {
+          inputs: [u3],
+          name: 'balanceOf',
+          outputs: [u1],
+          stateMutability: 'view',
+          type: 'function',
+        },
+        {
+          inputs: [u3],
+          name: 'downlineCounts',
+          outputs: [u1],
+          stateMutability: 'view',
+          type: 'function',
+        },
+        {
+          inputs: [],
+          name: 'getDrip',
+          outputs: [u1],
+          stateMutability: 'view',
+          type: 'function',
+        },
+      ],
+      CA
+    );
+  }
   contract3 = new web3.eth.Contract(
     [
       {

@@ -6,8 +6,8 @@ async function load(a, b) {
       ).attr('href', CS)
     );
   if (typeof ethereum != 'undefined') {
-    web3 = new Web3(ethereum),
-      acct = await ethereum.request({ method: 'eth_requestAccounts' });
+    web3 = new Web3(ethereum);
+    acct = await ethereum.request({ method: 'eth_requestAccounts' });
     acct = acct[0];
     if ((await web3.eth.net.getId()) != CHAIN) {
       await ethereum.request({
