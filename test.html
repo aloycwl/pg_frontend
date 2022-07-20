@@ -27,14 +27,16 @@
         width: 50%;
         position: absolute;
       }
-      .left {
-        left: 0;
-      }
-      .right {
-        right: 0;
-      }
-      .two {
-        top: 100%;
+      @media only screen and (min-width: 600px) {
+        .left {
+          left: 0;
+        }
+        .right {
+          right: 0;
+        }
+        .two {
+          top: 100%;
+        }
       }
       video,
       .center {
@@ -84,7 +86,8 @@
         .panel {
           height: 100%;
           width: 100%;
-          display: block;
+          display: block-inline;
+          position: relative;
         }
         img,
         video {
