@@ -54,7 +54,9 @@ async function disUSDT() {
   balUSDT = await contract3.methods.balanceOf(acct).call();
   $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US'));
   $('#txtRG').html(
-    (await contract.methods.getDrip().call(FA)).toLocaleString('en-US') +
+    ((await contract.methods.getDrip().call(FA)) / 1e18).toLocaleString(
+      'en-US'
+    ) +
       ' (No. of tokens: ' +
       ((await contract.methods.balanceOf(acct).call()) + ')')
   );
