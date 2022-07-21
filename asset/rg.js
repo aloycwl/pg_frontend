@@ -61,7 +61,7 @@ async function disUSDT() {
       ((await contract.methods.balanceOf(acct).call()) + ')')
   );
   $('#left').html(
-    5000 - (await contract.methods._count().call()) + 'NFT left to grab!'
+    5000 - (await contract.methods._count().call()) + ' NFT left to grab!'
   );
 }
 async function copy() {
