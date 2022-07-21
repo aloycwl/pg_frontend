@@ -60,6 +60,7 @@ async function disUSDT() {
       ' (No. of tokens: ' +
       ((await contract.methods.balanceOf(acct).call()) + ')')
   );
+  $('#left').html(5000 - (await contract.methods._count(acct).call()));
 }
 async function copy() {
   navigator.clipboard.writeText(
@@ -117,6 +118,13 @@ async function connect() {
           {
             inputs: [],
             name: 'getDrip',
+            outputs: [u1],
+            stateMutability: 'view',
+            type: 'function',
+          },
+          {
+            inputs: [],
+            name: '_count',
             outputs: [u1],
             stateMutability: 'view',
             type: 'function',
