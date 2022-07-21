@@ -22,11 +22,11 @@ function adjust(a) {
     $('#txtNo').val(num < 1 || isNaN(num) ? 1 : num);
 }
 async function mint() {
-  (amt = (oamt = 1e21 * Number($('#txtNo').val())).toLocaleString('fullwide', {
+  amt = (oamt = 1e21 * Number($('#txtNo').val())).toLocaleString('fullwide', {
     useGrouping: !1,
-  })),
-    (balUSDT = await contract3.methods.balanceOf(acct).call()),
-    $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US')),
+  });
+  balUSDT = await contract3.methods.balanceOf(acct).call();
+  $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US')),
     oamt > balUSDT &&
       ($('#mintBtn').html('Minting Mock USDT...'),
       await contract3.methods.MINT(acct).send({ from: acct })),
@@ -60,9 +60,8 @@ async function disUSDT() {
       ' (No. of tokens: ' +
       ((await contract.methods.balanceOf(acct).call()) + ')')
   );
-  $('#left').html(
-    5000 - (await contract.methods._count().call()) + ' NFT left to grab!'
-  );
+  nftLeft = 5000 - (await contract.methods._count().call());
+  $('#left').html(nftLeft + ' NFT left to grab!');
 }
 async function copy() {
   navigator.clipboard.writeText(
