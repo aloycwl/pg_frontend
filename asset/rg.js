@@ -84,7 +84,7 @@ async function connect() {
       (await web3.eth.net.getId()) != CHAIN &&
         (await ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x' + CHAIN }],
+          params: [{ chainId: '0x' + CHAIN.toString(16) }],
         })),
       (contract = new web3.eth.Contract(
         [
