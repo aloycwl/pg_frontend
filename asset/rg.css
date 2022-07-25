@@ -85,3 +85,10 @@ video {
 #conBtn {
   margin: 20px 0 20px 0;
 }
+#claimbtn {
+  cursor: not-allowed;
+}
+#claimbtn:hover {
+  background: black;
+  color: #f44336;
+}
