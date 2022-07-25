@@ -90,6 +90,6 @@ video {
   cursor: not-allowed;
 }
 #claimbtn:hover {
-  background: black;
+  background: 555;
   color: #f44336;
 }
