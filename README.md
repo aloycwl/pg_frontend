@@ -5,4 +5,8 @@ Ready Go Frontend
 - Vanilla CSS<br>
 - Vanilla JS<br>
 - Web3 shortened<br>
-- 
+- BSC mainnet<br>
+- Referral address get 20% referral fee<br>
+- RG tokens can mint and burn<br>
+- 10,000 RG tokens to be dripped within a year<br>
+- NFT to be 
