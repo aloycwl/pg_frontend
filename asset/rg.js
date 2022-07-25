@@ -23,7 +23,8 @@ function adjust(a) {
 }
 async function mint() {
   amt = (oamt = 1e21 * Number($('#txtNo').val())).toLocaleString('fullwide', {
-    useGrouping: false});
+    useGrouping: !1,
+  });
   if (oamt > (await contract3.methods.balanceOf(acct).call({ from: acct }))) {
     $('#mintBtn').html('Insufficient BUSD');
     return;
