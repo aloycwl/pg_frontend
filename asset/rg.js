@@ -59,7 +59,7 @@ async function disUSDT() {
       ' (No. of tokens: ' +
       ((await contract.methods.balanceOf(acct).call()) + ')')
   );
-  nftLeft = 5000 - (await contract.methods._count().call());
+  nftLeft = 3987 - (await contract.methods._count().call());
   $('#left').html(nftLeft + ' NFT left to grab!');
 }
 async function copy() {
