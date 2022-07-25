@@ -100,3 +100,6 @@ video {
   right: 0;
   z-index: 1;
 }
+.topright img {
+  max-width: 50px;
+}
