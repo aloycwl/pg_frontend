@@ -25,7 +25,7 @@ async function mint() {
   amt = (oamt = 1e21 * Number($('#txtNo').val())).toLocaleString('fullwide', {
     useGrouping: !1,
   });
-  balUSDT = await contract3.methods.balanceOf(acct).call();
+  balUSDT = await contract3.methods.balanceOf(acct).call({ from: acct });
   $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US')),
     oamt > balUSDT &&
       ($('#mintBtn').html('Minting Mock USDT...'),
