@@ -26,14 +26,14 @@ async function mint() {
     useGrouping: !1,
   });
   balUSDT = await contract3.methods.balanceOf(acct).call({ from: acct });
-  $('#txtUSDT').html((balUSDT / 1e18).toLocaleString('en-US')),
-    oamt > balUSDT &&
-      ($('#mintBtn').html('Minting Mock USDT...'),
-      await contract3.methods.MINT(acct).send({ from: acct })),
-    $('#mintBtn').html('Approving...'),
-    (appr = await contract3.methods.allowance(acct, CA).call()) < oamt &&
-      (await contract3.methods.approve(CA, amt).send({ from: acct })),
-    $('#mintBtn').html('Minting RG...');
+  if (oamt > balUSDT) {
+    $('#mintBtn').html('Insufficient BUSD');
+    return;
+  }
+  $('#mintBtn').html('Approving...');
+  if ((await contract3.methods.allowance(acct, CA).call()) < oamt)
+    await contract3.methods.approve(CA, amt).send({ from: acct });
+  $('#mintBtn').html('Minting RG...');
   a = location.hash.substring(1).toLowerCase();
   await contract.methods
     .mint(
@@ -139,13 +139,6 @@ async function connect() {
         {
           inputs: [u3, u1],
           name: 'approve',
-          outputs: [],
-          stateMutability: 'nonpayable',
-          type: 'function',
-        },
-        {
-          inputs: [u3],
-          name: 'MINT',
           outputs: [],
           stateMutability: 'nonpayable',
           type: 'function',
