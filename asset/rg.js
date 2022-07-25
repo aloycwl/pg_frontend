@@ -81,10 +81,10 @@ async function connect() {
       ((web3 = new Web3(ethereum)),
       (acct = await ethereum.request({ method: 'eth_requestAccounts' })),
       (acct = acct[0]),
-      (await web3.eth.net.getId()) != 4 &&
+      (await web3.eth.net.getId()) != CHAIN &&
         (await ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0x4' }],
+          params: [{ chainId: '0x' + parseInt(CHAIN, 16) }],
         })),
       (contract = new web3.eth.Contract(
         [
