@@ -70,13 +70,13 @@ async function copy() {
     $('#txtRef').html('Copied');
 }
 async function connect() {
-  $('#conBtn').hide(),
-    'undefined' != typeof CS &&
-      $('head').append(
-        $(
-          '<meta name="viewport"content="width=device-width,initial-scale=1.0"><link rel="stylesheet">'
-        ).attr('href', CS)
-      ),
+  $('#conBtn').hide();
+  'undefined' != typeof CS &&
+    $('head').append(
+      $(
+        '<meta name="viewport"content="width=device-width,initial-scale=1.0"><link rel="stylesheet">'
+      ).attr('href', CS)
+    ),
     'undefined' != typeof ethereum &&
       ((web3 = new Web3(ethereum)),
       (acct = await ethereum.request({ method: 'eth_requestAccounts' })),
@@ -166,6 +166,6 @@ async function connect() {
       ],
       '0x263b0355B80d384C55dec84DD13DFa10D2141442'
     )),
-    $('#root').show(),
-    await disUSDT();
+    $('#root').show();
+  await disUSDT();
 }
