@@ -1,8 +1,8 @@
 # Ready Go Frontend
 Ready Go Frontend
 
-- Vanilla reponsive HTML
-- Vanilla CSS
-- Vanilla JS
-- Web3 shortened
+- Vanilla reponsive HTML<br>
+- Vanilla CSS<br>
+- Vanilla JS<br>
+- Web3 shortened<br>
 - 
