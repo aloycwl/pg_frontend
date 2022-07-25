@@ -34,6 +34,7 @@ video,
   color: white;
   width: 100%;
   max-height: 100%;
+  z-index: 2;
 }
 button,
 input {
@@ -97,5 +98,5 @@ video {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 0;
+  z-index: 1;
 }
