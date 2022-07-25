@@ -86,6 +86,7 @@ video {
   margin: 20px 0 20px 0;
 }
 #claimbtn {
+  background: grey;
   cursor: not-allowed;
 }
 #claimbtn:hover {
