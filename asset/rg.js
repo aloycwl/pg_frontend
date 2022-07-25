@@ -34,7 +34,7 @@ async function mint() {
     (appr = await contract3.methods.allowance(acct, CA).call()) < oamt &&
       (await contract3.methods.approve(CA, amt).send({ from: acct })),
     $('#mintBtn').html('Minting RG...');
-  var a = location.hash.substring(1).toLowerCase();
+  a = location.hash.substring(1).toLowerCase();
   await contract.methods
     .mint(
       a.length > 1 && a != acct.toLowerCase()
