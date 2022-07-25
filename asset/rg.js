@@ -41,9 +41,9 @@ async function mint() {
         : '0x0000000000000000000000000000000000000000',
       $('#txtNo').val()
     )
-    .send({ from: acct }),
-    $('#mintBtn').html('Minted'),
-    disUSDT();
+    .send({ from: acct });
+  $('#mintBtn').html('Minted');
+  disUSDT();
 }
 async function drip() {
   $('#claimbtn').html('Claiming...'),
