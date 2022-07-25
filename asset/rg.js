@@ -158,7 +158,7 @@ async function connect() {
           type: 'function',
         },
       ],
-      '0x263b0355B80d384C55dec84DD13DFa10D2141442'
+      USDT
     );
     $('#root').show();
     await disUSDT();
